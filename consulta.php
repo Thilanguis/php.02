@@ -15,9 +15,29 @@
     <label>Nome</label>
     <div class="form-group">
     <input type="text" name="nome" class="form-control">
+    <div style="margin-top: 10px;">
     <input type="submit" value="Buscar" class="btn btn-primary">
     </div>
+    </div>
     </form>
+    
+    <?php
+    $nome = $GET["nome"];
+        
+        include_once 'conexao';
+    
+    $sql = "select * from contatos where nome like '%".$nome."%'";
+    
+        $result = mysqli_query ($con,$sql);
+        
+        $registros = mysqli_num_rows (result);
+        
+        if ($registros > 0)
+        {
+            
+        }
+    ?>
+    
     </div>
     
     
