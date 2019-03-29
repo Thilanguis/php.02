@@ -22,20 +22,47 @@
     </form>
     
     <?php
-    $nome = $GET["nome"];
+         if(isset($_GET["nome"]))
+         {
+    $nome = $_GET["nome"];
         
-        include_once 'conexao';
+        include_once 'conexao.php ';
     
-    $sql = "select * from contatos where nome like '%".$nome."%'";
+    $sql = "select * from contatos where nome like '%".$nome."%' order by nome";
     
         $result = mysqli_query ($con,$sql);
         
-        $registros = mysqli_num_rows (result);
+        $totalRegistros = mysqli_num_rows ($result);
         
-        if ($registros > 0)
-        {
-            
+        if ($totalRegistros > 0)
+         
+            { ?>
+        <table id="tabelaDinamica" class="table table-hover table-stiped">
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Endereço</th>
+                <th>Telefone1</th>
+            </tr>
+
+            <?php
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        echo "<tr>";
+                        echo "<td>".$row["nome"]."</td>";
+                        echo "<td>".$row["email"]."</td>";
+                        echo "<td>".$row["estadoCivil"]."</td>";
+                        echo "<td>".$row["sexo"]."</td>";
+    
+                    } ?>
+        </table>
+        <?php 
         }
+             else{
+                 echo "Nenhum registro encontrado!";
+             }
+             }
+        
     ?>
     
     </div>
