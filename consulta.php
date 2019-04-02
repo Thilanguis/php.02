@@ -41,8 +41,8 @@
             <tr>
                 <th>Nome</th>
                 <th>E-mail</th>
-                <th>Endereço</th>
-                <th>Telefone1</th>
+                <th>Estado Civil</th>
+                <th>Sexo</th>
             </tr>
 
             <?php
@@ -53,9 +53,10 @@
                         echo "<td>".$row["email"]."</td>";
                         echo "<td>".$row["estadoCivil"]."</td>";
                         echo "<td>".$row["sexo"]."</td>";
+                        echo "<tr>";
     
-                    } ?>
-        </table>
+                    }  ?>
+        </table> 
         <?php 
         }
              else{
@@ -63,7 +64,7 @@
              }
              }
         
-    ?>
+    echo "total de registros:" . $totalRegistros; ?>
     
     </div>
     
